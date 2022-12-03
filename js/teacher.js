@@ -6,24 +6,26 @@ const url='http://localhost:8080/users/'
   }
 
   function usuarios(){
-    var i='http://localhost:8080/users/'
     consultaAll(url)
   }
 
   function consultapost(){
-    var c =document.querySelector("#imput1")
+    var c =document.querySelector("#buscarid")
     var i = c.value
+    let datos={
+      userName: "pepito",
+      userCode: 115184222,
+      identifyCardNumber: 122445218,
+      email: i+"@ufps.edu.co",
+      password: "brayan123",
+      admin: true}
+
     console.log(i);
       fetch(url, {
             method: 'POST',
-            body: JSON.stringify({
-              "userName": "pepito",
-              "userCode": 115184222,
-              "identifyCardNumber": 122445218,
-              "email": i+"@ufps.edu.co",
-              "password": "brayan123",
-              "admin": true
-            })
+            body: JSON.stringify(datos),
+            headers:{
+          "Content-Type":"application/json; charset=UTF-8"}
           })
       .then(response => response.json())
       .then(json => console.log(json))
